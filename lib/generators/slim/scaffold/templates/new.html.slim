@@ -1,9 +1,11 @@
 - content_for :title, 'New <%= singular_table_name %>'
 - content_for :hero do
-  .hero.is-small: .hero-body: .container: h1 New <%= singular_table_name %>
+  .hero.is-small: .hero-body: .container: h1.title New <%= singular_table_name %>
 
 .section: .container
   == render 'form'
 
-.section: .container
-  = link_to 'Back', <%= index_helper %>_path
+.section: .container  
+  = link_to <%= index_helper %>_path, class: 'button'
+      span.icon: i.fas.fa-arrow-left
+      span Back

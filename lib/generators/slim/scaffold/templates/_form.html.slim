@@ -7,6 +7,6 @@
           li = message
 
 <% attributes.each do |attribute| -%>
-    = f.input :<%= attribute.name %>
+  = f.input :<%= attribute.name %>
 <% end -%>
-    = f.submit, class: 'is-primary'
+  = f.button :submit, class: 'is-primary'

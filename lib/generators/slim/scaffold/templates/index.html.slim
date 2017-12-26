@@ -1,11 +1,13 @@
 - content_for :title, '<%= human_name %>' 
 - content_for :hero do
   .hero.is-small: .hero-body: .container: .columns
-    .column: h1 Listing <%= plural_table_name %>
+    .column: h1.title Listing <%= plural_table_name %>
     .column.is-hidden-mobile
     .column.is-narrow.is-hidden-mobile
       - if current_user
-        = link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path
+        = link_to new_<%= singular_table_name %>_path, class: 'button'        
+          span.icon: i.fas.fa-plus
+          span New <%= human_name %>
 
 .section: .container: .content: table
   thead
@@ -27,5 +29,8 @@
         td = link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
         td = link_to 'Destroy', <%= singular_table_name %>, data: { confirm: 'Are you sure?' }, method: :delete
 
-.section: .container
-  = link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path
+- if current_user
+  .section: .container
+    = link_to new_<%= singular_table_name %>_path, class: 'button'        
+        span.icon: i.fas.fa-plus
+        span New <%= human_name %>
