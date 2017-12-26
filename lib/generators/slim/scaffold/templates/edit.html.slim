@@ -6,7 +6,7 @@
   == render 'form'
 
 .section: .container: .buttons.has-addons
-  = link_to @<%= index_helper %>_path, class: 'button' do
+  = link_to <%= index_helper %>_path, class: 'button' do
     span.icon: i.fas.fa-arrow-left
     span Back
   = link_to 'Show', @<%= singular_table_name %>, class: 'button'
