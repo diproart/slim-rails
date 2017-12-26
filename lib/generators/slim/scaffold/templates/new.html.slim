@@ -1,5 +1,9 @@
-h1 New <%= singular_table_name %>
+- content_for :title, 'New <%= singular_table_name %>'
+- content_for :hero do
+  .hero.is-small: .hero-body: .container: h1 New <%= singular_table_name %>
 
-== render 'form'
+.section: .container
+  == render 'form'
 
-= link_to 'Back', <%= index_helper %>_path
+.section: .container
+  = link_to 'Back', <%= index_helper %>_path

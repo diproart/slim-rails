@@ -1,11 +1,20 @@
-p#notice = notice
+- content_for :title, '<%= human_name %>'
+- content_for :hero do
+  .hero.is-small: .hero-body: .container: h1.title <%= human_name %>
 
+.section: .container: .content
 <% attributes.each do |attribute| -%>
-p
-  strong <%= attribute.human_name %>:
-  = @<%= singular_table_name %>.<%= attribute.name %>
+  p
+    strong <%= attribute.human_name %>:
+    = @<%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
 
-=> link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)
-'|
-=< link_to 'Back', <%= index_helper %>_path
+- if current_user
+  .section style="padding-top: 0": .container
+    .buttons.has-addons
+      = link_to <%= index_helper %>_path, class: 'button'
+        span.icon: i.fas.fa-arrow-left
+        span Back
+      = link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'button is-primary' do
+        span.icon: i.fas.fa-edit
+        span Edit
